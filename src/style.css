@@ -1456,6 +1456,23 @@ body {
   opacity: 0.7;
 }
 
+.footer-credit {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--netflix-muted-gray);
+}
+
+.footer-credit a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-credit a:hover {
+  color: var(--netflix-red);
+  text-decoration: underline;
+}
+
 /* ==========================================================================
    ANDROID & MOBILE DEVICE COMPATIBILITY STYLES
    ========================================================================== */
