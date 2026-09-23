@@ -1498,61 +1498,225 @@ button, a, input, select, .pill-btn, .nav-link, .card-item, .modal-tab-btn {
   }
 }
 
+/* ============================================================
+   MOBILE (≤ 600px) — Full overhaul for Android/iOS
+   ============================================================ */
 @media (max-width: 600px) {
+
+  /* --- NAVBAR --- */
   .navbar {
-    padding: 10px 14px;
+    padding: 10px 12px;
+    height: 58px;
   }
-  .hero {
-    height: 65vh;
-    min-height: 420px;
-    padding: 0 16px 24px;
+  .nav-left {
+    gap: 8px;
   }
-  .hero-title {
-    font-size: 26px;
+  .nav-right {
+    gap: 8px;
   }
-  .hero-subtitle {
-    font-size: 14px;
+  .brand-icon {
+    font-size: 17px;
+    letter-spacing: -0.5px;
   }
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+  .brand-badge {
+    font-size: 9px;
+    padding: 1px 5px;
   }
-  .btn-play, .btn-info {
-    min-height: 44px;
-    justify-content: center;
-    font-size: 14px;
+  /* Collapse search to icon-only; expand on focus */
+  .search-box {
+    position: relative;
   }
   .search-input {
-    width: 120px;
+    width: 32px;
+    padding: 7px 7px 7px 32px;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+    background: rgba(0,0,0,0.5);
   }
-  .search-input:focus {
-    width: 160px;
+  .search-input:focus,
+  .search-input:not(:placeholder-shown) {
+    width: 140px;
   }
-  .card-item {
-    width: 160px;
-    height: 105px;
+  /* Hide "My List" label + counter — keep icon */
+  .my-list-btn-nav span,
+  #my-list-count {
+    display: none;
+  }
+  .my-list-btn-nav {
+    padding: 6px 8px;
+    min-width: 36px;
+    justify-content: center;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    height: 52vh;
+    min-height: 320px;
+    padding: 0 14px 20px;
+  }
+  .hero-title {
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .hero-subtitle {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .hero-summary {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+    margin-bottom: 16px;
+  }
+  .hero-meta-badges {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .hero-actions {
+    flex-direction: row;
+    gap: 8px;
+  }
+  .btn-play, .btn-info {
+    min-height: 40px;
+    padding: 10px 16px;
+    font-size: 13px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* --- FILTER PILLS BAR --- */
+  .filter-bar {
+    padding: 0 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
   .category-pills {
     overflow-x: auto;
-    white-space: nowrap;
     flex-wrap: nowrap;
     width: 100%;
-    padding-bottom: 6px;
+    padding-bottom: 4px;
+    gap: 8px;
+    /* hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
+  }
+  .category-pills::-webkit-scrollbar {
+    display: none;
   }
   .pill-btn {
     flex-shrink: 0;
-    min-height: 40px;
-    padding: 8px 14px;
+    min-height: 36px;
+    padding: 6px 14px;
+    font-size: 12px;
+    white-space: nowrap;
   }
+
+  /* --- CATEGORY ROWS --- */
+  .main-content {
+    margin-top: 8px;
+  }
+  .category-row {
+    margin-bottom: 28px;
+    padding: 0 12px;
+  }
+
+  /* Row header: title wraps nicely, count stays right */
+  .row-header {
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .row-title {
+    font-size: 16px;
+    font-weight: 700;
+    flex: 1;
+    align-items: flex-start;
+    line-height: 1.3;
+  }
+  .row-title::before {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .row-count {
+    flex-shrink: 0;
+    font-size: 12px;
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+
+  /* --- CARDS: 2-column grid on mobile instead of tiny scroll --- */
+  .carousel-container {
+    overflow: visible;
+  }
+  .carousel-btn {
+    display: none; /* hide prev/next arrows on mobile */
+  }
+  .carousel-track-wrapper {
+    overflow: visible;
+    padding: 0;
+  }
+  .carousel-track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+  .card-item {
+    width: 100%;
+    height: 0;
+    padding-bottom: 62%; /* maintain 16:10 ratio */
+    position: relative;
+    border-radius: 8px;
+  }
+  .card-item:hover {
+    transform: none; /* disable scale hover on mobile */
+  }
+  .card-img-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .card-title {
+    font-size: 13px;
+  }
+  .card-subtitle {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+  .card-quick-meta {
+    font-size: 10px;
+    gap: 6px;
+  }
+  .card-play-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+  .card-badge {
+    font-size: 8px;
+    padding: 1px 5px;
+  }
+  .card-rating-pill {
+    font-size: 10px;
+  }
+
+  /* --- MODAL --- */
   .modal-card {
-    width: 98vw;
-    max-height: 96dvh;
-    margin: 4px auto;
+    width: 100vw;
+    max-height: 100dvh;
+    border-radius: 0;
+    margin: 0;
   }
   .modal-body {
     padding: 14px;
+  }
+  .modal-title {
+    font-size: 22px;
+  }
+  .modal-subtitle {
+    font-size: 13px;
   }
   .modal-tabs {
     overflow-x: auto;
@@ -1560,75 +1724,47 @@ button, a, input, select, .pill-btn, .nav-link, .card-item, .modal-tab-btn {
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     gap: 8px;
+    scrollbar-width: none;
+  }
+  .modal-tabs::-webkit-scrollbar {
+    display: none;
   }
   .modal-tab-btn {
     flex-shrink: 0;
     min-height: 44px;
     font-size: 12px;
-    padding: 8px 12px;
+    padding: 8px 10px;
   }
   .modal-close-btn {
     width: 44px;
     height: 44px;
-    top: 6px;
-    right: 6px;
-    background: rgba(0, 0, 0, 0.7);
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.75);
   }
   .modal-action-buttons {
     flex-direction: column;
     width: 100%;
   }
-  .modal-official-btn, .modal-yt-btn, .modal-bookmark-btn {
+  .modal-official-btn,
+  .modal-yt-btn,
+  .modal-bookmark-btn {
     width: 100%;
     justify-content: center;
     min-height: 44px;
   }
+  .modal-header-info {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .modal-meta-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* --- SANDBOX --- */
   .sandbox-container {
-    padding: 14px;
+    padding: 12px;
   }
 }
 
-/* Fix mobile layout issues */
-@media (max-width: 600px) {
-  .brand-icon {
-    font-size: 18px;
-  }
-  .brand-logo {
-    gap: 4px;
-  }
-  .nav-left {
-    gap: 10px;
-  }
-  .nav-right {
-    gap: 10px;
-  }
-  .my-list-btn-nav span {
-    display: none;
-  }
-  .my-list-btn-nav {
-    padding: 6px 8px;
-  }
-  .category-pills::-webkit-scrollbar {
-    display: none;
-  }
-  .category-pills {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .row-header {
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .row-title {
-    font-size: 18px;
-    align-items: flex-start;
-  }
-  .row-title::before {
-    margin-top: 3px;
-    flex-shrink: 0;
-  }
-  .row-count {
-    flex-shrink: 0;
-    margin-top: 4px;
-  }
-}
