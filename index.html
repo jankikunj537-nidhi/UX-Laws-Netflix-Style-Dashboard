@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Laws of UX | Netflix Video Dashboard</title>
+  <meta name="description" content="Explore real-world UX design principles, video lectures, and verified enterprise case studies in a cinematic Netflix dashboard experience.">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+
+  <!-- NETFLIX NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-left">
+      <div class="brand-logo" id="brand-logo">
+        <div class="brand-icon">LAWS<span style="color:#fff;">OF</span>UX</div>
+        <div class="brand-badge">FLIX</div>
+      </div>
+      <ul class="nav-links">
+        <li><a class="nav-link active" data-category="all">Home</a></li>
+        <li><a class="nav-link" data-category="Heuristic">Heuristics</a></li>
+        <li><a class="nav-link" data-category="Principle">Principles</a></li>
+        <li><a class="nav-link" data-category="Gestalt">Gestalt</a></li>
+        <li><a class="nav-link" data-category="Cognitive">Cognitive</a></li>
+        <li class="nav-dropdown-item">
+          <a class="nav-link nav-dropdown-toggle" data-category="top" id="top-rated-nav-link">
+            Top Rated <i data-feather="chevron-down" style="width:14px; height:14px; margin-left:2px;"></i>
+          </a>
+          <div class="top-rated-dropdown-menu" id="top-rated-dropdown">
+            <div class="dropdown-header">
+              <span class="dropdown-title">Top Rated 5.0★ UX Laws</span>
+              <span class="dropdown-badge">9 Videos</span>
+            </div>
+            <div class="dropdown-list" id="top-rated-dropdown-list">
+              <!-- Dynamically populated via main.js -->
+            </div>
+            <a class="dropdown-footer-link" id="top-rated-view-all">View All 9 Top Rated Laws →</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <div class="search-box">
+        <i data-feather="search" class="search-icon"></i>
+        <input type="text" id="search-input" class="search-input" placeholder="Search laws, case studies (e.g. Apple)...">
+      </div>
+      <button class="my-list-btn-nav" id="my-list-nav-btn">
+        <i data-feather="bookmark"></i>
+        <span>My List</span>
+        <span id="my-list-count" style="background:var(--netflix-red); padding: 1px 6px; border-radius: 10px; font-size:11px;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SPOTLIGHT SECTION -->
+  <section class="hero" id="hero-section">
+    <div class="hero-bg-container">
+      <img id="hero-bg-img" class="hero-bg-image" src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1600&q=80" alt="UX Hero Spotlight" loading="lazy">
+    </div>
+    <div class="hero-vignette"></div>
+    <div class="hero-content">
+      <div class="hero-meta-badges">
+        <span class="badge-tag" id="hero-badge">MOST POPULAR</span>
+        <span class="badge-rating" id="hero-rating"><i data-feather="star" style="width:12px; height:12px; fill:#FFD700;"></i> 5.0 (18.9k ratings)</span>
+        <span class="privacy-badge"><i data-feather="youtube" style="width:11px; height:11px;"></i> YouTube Video Lecture</span>
+      </div>
+      <h1 class="hero-title" id="hero-title">Fitts's Law</h1>
+      <h2 class="hero-subtitle" id="hero-subtitle">Target Distance & Size Optimization</h2>
+      <p class="hero-summary" id="hero-summary">
+        The time to acquire a target is a function of the distance to and size of the target.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-play" id="hero-play-btn">
+          <i data-feather="play" style="fill:#000;"></i> Play Video Lesson
+        </button>
+        <button class="btn-info" id="hero-info-btn">
+          <i data-feather="info"></i> Case Studies & Sandbox
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY FILTER PILLS BAR -->
+  <div class="filter-bar">
+    <div class="category-pills">
+      <button class="pill-btn active" data-cat="all">All Laws</button>
+      <button class="pill-btn" data-cat="Heuristic">Heuristics (5)</button>
+      <button class="pill-btn" data-cat="Principle">Principles (7)</button>
+      <button class="pill-btn" data-cat="Gestalt">Gestalt Laws (6)</button>
+      <button class="pill-btn" data-cat="Cognitive">Cognitive Laws (5)</button>
+      <button class="pill-btn" data-cat="top">5.0 Star Rated</button>
+      <button class="pill-btn" data-cat="mylist">My List ❤️</button>
+    </div>
+  </div>
+
+  <!-- MAIN CAROUSEL ROWS CONTAINER -->
+  <main class="main-content" id="main-content">
+    <!-- Dynamically rendered via main.js -->
+  </main>
+
+  <!-- VIDEO DETAIL MODAL (WITH INTERACTIVE UX SANDBOX) -->
+  <div class="modal-backdrop" id="video-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">
+        <i data-feather="x"></i>
+      </button>
+
+      <!-- Native HTML5 Video Player Container -->
+      <div class="modal-video-container">
+        <video id="modal-html5-video" class="modal-html5-video" controls autoplay loop playsinline poster="">
+          <source id="modal-video-source" src="" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="video-watermark-badge">NETFLIX UX ORIGINAL</div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="modal-header-info">
+          <div>
+            <h2 class="modal-title" id="modal-title">Fitts's Law</h2>
+            <div class="modal-subtitle" id="modal-subtitle">Target Distance & Size Optimization</div>
+            <div class="modal-meta-row">
+              <span class="modal-match-score" id="modal-match">99% Match</span>
+              <span class="modal-rating-badge" id="modal-rating"><i data-feather="star" style="width:12px; height:12px; fill:#FFD700;"></i> 5.0 / 5</span>
+              <span class="modal-author-tag" id="modal-author">Paul Fitts (1954)</span>
+
+            </div>
+          </div>
+          <div class="modal-action-buttons">
+            <button class="modal-bookmark-btn" id="modal-bookmark-btn">
+              <i data-feather="plus"></i>
+              <span>Add to My List</span>
+            </button>
+            <a id="modal-official-btn" href="https://lawsofux.com" target="_blank" class="modal-official-btn" rel="noopener noreferrer">
+              <i data-feather="external-link"></i> Official Article
+            </a>
+            <a id="modal-yt-btn" href="https://youtube.com" target="_blank" class="modal-yt-btn" rel="noopener noreferrer">
+              <i data-feather="youtube"></i> YouTube Video
+            </a>
+          </div>
+        </div>
+
+        <!-- Modal Nav Tabs -->
+        <div class="modal-tabs">
+          <button class="modal-tab-btn active" data-tab="overview">Overview & Psychology</button>
+          <button class="modal-tab-btn" data-tab="casestudies">Real-World Case Studies</button>
+          <button class="modal-tab-btn" data-tab="takeaways">UX Implementation Tips</button>
+          <button class="modal-tab-btn sandbox-tab-btn" data-tab="sandbox">⚡ Interactive UX Sandbox</button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="tab-overview" class="modal-tab-content">
+          <p id="modal-description" style="font-size:15px; color:#d2d2d2; line-height:1.7; margin-bottom:16px;">
+            Description text goes here...
+          </p>
+        </div>
+
+        <div id="tab-casestudies" class="modal-tab-content" style="display:none;">
+          <div class="case-studies-grid" id="modal-case-studies-grid">
+            <!-- Dynamic case studies -->
+          </div>
+        </div>
+
+        <div id="tab-takeaways" class="modal-tab-content" style="display:none;">
+          <ul class="takeaways-list" id="modal-takeaways-list">
+            <!-- Dynamic takeaways -->
+          </ul>
+        </div>
+
+        <!-- Interactive Sandbox Tab -->
+        <div id="tab-sandbox" class="modal-tab-content" style="display:none;">
+          <div class="sandbox-container" id="sandbox-container">
+            <!-- Dynamic Interactive UX Simulation Sandbox -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <ul class="footer-links">
+      <li><a href="https://lawsofux.com/" target="_blank" rel="noopener noreferrer">Official Laws of UX Site</a></li>
+      <li><a href="https://jonyablonski.com/" target="_blank" rel="noopener noreferrer">Jon Yablonski — Creator</a></li>
+      <li><a href="https://www.nngroup.com/" target="_blank" rel="noopener noreferrer">Nielsen Norman Group</a></li>
+
+    </ul>
+    <p class="footer-copy">© 2026 Laws of UX Flix. Built for design excellence with accurate, world-wide applied psychological principles.</p>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
