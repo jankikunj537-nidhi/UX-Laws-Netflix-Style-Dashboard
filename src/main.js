@@ -386,8 +386,6 @@ function createCardComponent(law) {
           <h4 class="card-title">${law.title}</h4>
           <p class="card-subtitle">${law.subtitle}</p>
           <div class="card-quick-meta">
-            <span class="card-match">${Math.round(law.rating * 20)}% Match</span>
-            <span class="card-duration">${law.duration}</span>
             <div class="card-play-icon"><i data-feather="play" style="fill:currentColor;"></i></div>
           </div>
         </div>
