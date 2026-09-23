@@ -1587,3 +1587,48 @@ button, a, input, select, .pill-btn, .nav-link, .card-item, .modal-tab-btn {
     padding: 14px;
   }
 }
+
+/* Fix mobile layout issues */
+@media (max-width: 600px) {
+  .brand-icon {
+    font-size: 18px;
+  }
+  .brand-logo {
+    gap: 4px;
+  }
+  .nav-left {
+    gap: 10px;
+  }
+  .nav-right {
+    gap: 10px;
+  }
+  .my-list-btn-nav span {
+    display: none;
+  }
+  .my-list-btn-nav {
+    padding: 6px 8px;
+  }
+  .category-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .category-pills {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .row-header {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .row-title {
+    font-size: 18px;
+    align-items: flex-start;
+  }
+  .row-title::before {
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .row-count {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+}
